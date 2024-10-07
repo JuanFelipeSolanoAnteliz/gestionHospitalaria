@@ -3,6 +3,8 @@ const app = express();
 const { join,dirname } = require('path');
 const indexRouter = require('./server/router/indexRouter');
 
+app.use('/css', express.static(join(__dirname, process.env.EXPRESS_STATIC, '/css')));
+
 app.get('/', (req, res, next)=>{
     req.__dirname = __dirname;
     next();

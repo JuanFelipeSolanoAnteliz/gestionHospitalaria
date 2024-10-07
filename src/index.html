@@ -3,10 +3,173 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Doctor Management</title>
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-    <h1>si</h1>
-    <img src="https://cdn.discordapp.com/attachments/1212098993383936104/1292827974227329106/Fd3XkSxWIAAgJcA.png?ex=67052760&is=6703d5e0&hm=3c1f44fb334e2e4f0eb000fe8913e0d44bbe84956a6bc1b31908b9d2087eb761&" alt="">
+    <header>
+        <div class="header-content">
+            <div class="logo">+</div>
+            <nav>
+                <ul>
+                    <li><a href="#">Users</a></li>
+                    <li><a href="#">Patients</a></li>
+                    <li><a href="#">Hospitals</a></li>
+                    <li><a href="#">Notice</a></li>
+                    <li><a href="#">Help Center</a></li>
+                </ul>
+            </nav>
+            <div class="user-menu">
+                <div class="notification-icon">🔔</div>
+                <img src="https://i.pravatar.cc/40" alt="User Avatar" class="user-avatar">
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="tabs">
+            <button class="tab active">Doctor</button>
+            <button class="tab">Administration</button>
+            <button class="tab">Accounts</button>
+        </div>
+
+        <div class="content">
+            <div id="doctorList">
+                <div class="content-header">
+                    <h2>List of doctors</h2>
+                    <button class="add-doctor-btn" id="addDoctorBtn">+ Add new doctor</button>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>ID</th>
+                            <th>Email</th>
+                            <th>Phone number</th>
+                            <th>Date added</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <img src="https://i.pravatar.cc/40?img=1" alt="Brooklyn Simmons" class="doctor-avatar">
+                                Brooklyn Simmons
+                            </td>
+                            <td>87254523</td>
+                            <td>brooklyn@gmail.com</td>
+                            <td>(603) 555-0123</td>
+                            <td>21/12/2022</td>
+                            <td><span class="status status-approved">Approved</span></td>
+                            <td>></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="https://i.pravatar.cc/40?img=2" alt="Kristin Watson" class="doctor-avatar">
+                                Kristin Watson
+                            </td>
+                            <td>63874563</td>
+                            <td>kristin@gmail.com</td>
+                            <td>(319) 555-0114</td>
+                            <td>22/12/2022</td>
+                            <td><span class="status status-declined">Declined</span></td>
+                            <td>></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="https://i.pravatar.cc/40?img=3" alt="Jacob Jones" class="doctor-avatar">
+                                Jacob Jones
+                            </td>
+                            <td>23647569</td>
+                            <td>jacob@gmail.com</td>
+                            <td>(319) 555-0115</td>
+                            <td>23/12/2022</td>
+                            <td><span class="status status-approved">Approved</span></td>
+                            <td>></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="https://i.pravatar.cc/40?img=4" alt="Cody Fisher" class="doctor-avatar">
+                                Cody Fisher
+                            </td>
+                            <td>39485632</td>
+                            <td>cody@gmail.com</td>
+                            <td>(229) 555-0109</td>
+                            <td>24/12/2022</td>
+                            <td><span class="status status-approved">Approved</span></td>
+                            <td>></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="addDoctorForm" class="hidden">
+                <div class="content-header">
+                    <h2>Add New Doctor</h2>
+                </div>
+                <div class="form-container">
+                    <div class="progress-bar">
+                        <div class="progress-bar-fill"></div>
+                    </div>
+                    <form>
+                        <div class="form-group">
+                            <label for="userType">User type</label>
+                            <select id="userType">
+                                <option>Select user type</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="gender">Gender</label>
+                            <select id="gender">
+                                <option>Select gender</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="firstName">First name</label>
+                            <input type="text" id="firstName" placeholder="Enter first name">
+                        </div>
+                        <div class="form-group">
+                            <label for="designation">Designation</label>
+                            <input type="text" id="designation" placeholder="Enter designation">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last name</label>
+                            <input type="text" id="lastName" placeholder="Enter last name">
+                        </div>
+                        <div class="form-group">
+                            <label for="dateOfBirth">Date of birth</label>
+                            <input type="date" id="dateOfBirth">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email address</label>
+                            <input type="email" id="email" placeholder="Your first email">
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary" id="cancelBtn">Cancel</button>
+                            <button type="submit" class="btn btn-primary">NEXT STEP</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const addDoctorBtn = document.getElementById('addDoctorBtn');
+        const cancelBtn = document.getElementById('cancelBtn');
+        const doctorList = document.getElementById('doctorList');
+        const addDoctorForm = document.getElementById('addDoctorForm');
+
+        addDoctorBtn.addEventListener('click', () => {
+            doctorList.classList.add('hidden');
+            addDoctorForm.classList.remove('hidden');
+        });
+
+        cancelBtn.addEventListener('click', () => {
+            addDoctorForm.classList.add('hidden');
+            doctorList.classList.remove('hidden');
+        });
+    </script>
 </body>
 </html>
