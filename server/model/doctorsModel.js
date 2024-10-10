@@ -13,17 +13,23 @@ module.exports = class Doctor extends driver{
             'SELECT * FROM doctores;'
         );
         console.log(results)
-        return ({status:200, message: `doctor fetched successfuly`, data:results});
+        return ({status:200, message: `doctors fetched successfuly`, data:results});
     }
 
     async getAllDoctorsById(id){
-        let con = await this.connectionFunction;
-        const [results] = await con.data.query(
-            `SELECT * FROM doctores WHERE id = ${id}  ; `
-        );
-        console.log(results);
-        return ({status:200, message: `doctor fetched successfuly`, data:results});
+        try{
+            let con = await this.connectionFunction;
+            const [results] = await con.data.query(
+                `SELECT * FROM doctores WHERE id = ${id}; `
+            );
+            console.log(results);
+            return  results.lengh !=0 ? {status:200, message: `doctor fetched successfuly`, data:results} : {status:404, message: `doctor not fetched`, data:results}
+        }catch(error){
+            console.log(error)
+            return error;
+        }
     }
+
     async insertDoctor(data){
         let con = await this.connectionFunction;
         const query = `INSERT INTO doctores (id, nombre_completo, genero, especialidad_fk, fecha_nacimiento) VALUES (?,?,?,?,?)`;
