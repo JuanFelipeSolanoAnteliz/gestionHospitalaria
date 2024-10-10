@@ -2,7 +2,7 @@ const mysql = require( 'mysql2/promise')
 
 
 class driver {
-    #connection;
+    connection;
 
     constructor(){
 
@@ -11,7 +11,7 @@ class driver {
     get connectionFunction(){
         return mysql.createConnection({
             host: 'localhost',
-            user: 'campus2023',
+            user: 'root',
             password:'campus2023',
             port:3306,
             database:'hospital',
